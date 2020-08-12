@@ -5,6 +5,17 @@ const gamePattern = [];
 
 const userClickedPattern = []; 
 
+let level = 0;
+
+//Detect when keyboard key has been pressed to start Game
+//used "one" method to make sure it just responds to the first key press
+$("body").one("keypress",function(){
+    
+    nextSequence();
+
+    $("h1").text("Level " + level);
+});
+
  // DETECT WHEN BUTTONS ARE CLICKED AND TRIGGER HANDLER FUNCTION
  $(".btn").click(function(){
     
@@ -38,6 +49,10 @@ function nextSequence(){
 
     // PLay sound for button selected
     playSound(randomChosenColor);
+
+    level += 1;
+
+    $("#level-title").text("Level " + level);
 }
 
 //  Refactor playing audio into one function to use in both instances
